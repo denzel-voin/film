@@ -1,0 +1,45 @@
+@mixin phone
+  @media (max-width: 600px)
+    @content
+@mixin tab-port
+  @media (max-width: 900px)
+    @content
+@mixin tab-land
+  @media (max-width: 1240px)
+    @content
+@mixin big-screen
+  @media (min-width: 1800px)
+    @content
+
+@mixin respond($breakpoint)
+  @if $breakpoint == phone
+    @media only screen and (max-width: 600px)
+      @content
+  @if $breakpoint == tab-port
+    @media only screen and  (max-width: 900px)
+      @content
+  @if $breakpoint == tab-land
+    @media only screen and  (max-width: 1240px)
+      @content
+  @if $breakpoint == big-screen
+    @media only screen and  (min-width: 1800px)
+      @content
+
+*, ::after, ::before
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html
+  font-size: calc( 10 / 16 * 100%)
+  color: white
+  font-family: Arial, sans-serif
+  @include respond(tab-land)
+    font-size: 56.25%
+  @include respond(tab-port)
+    font-size: 50%
+  @include respond(phone)
+    font-size: 40%
+  @include respond(big-screen)
+    font-size: 75%
+
