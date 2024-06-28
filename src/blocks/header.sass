@@ -1,0 +1,26 @@
+@use "../sass/variables" as *
+
+.header
+  height: $headerHeight
+  align-items: center
+  justify-content: space-between
+  &__basket
+    background: url(../images/basket.svg) no-repeat
+    width: 30px
+    border: none
+    position: relative
+    cursor: pointer
+    &-value
+      position: absolute
+      display: flex
+      justify-content: center
+      align-items: center
+      top: 0
+      right: -.5rem
+      width: 1.5rem
+      height: 1.5rem
+      font-size: 1rem
+      background-color: $secondary
+      color: $background
+      border-radius: 100%
+      font-weight: 600

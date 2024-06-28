@@ -8,7 +8,42 @@
 
 		<title>Film!</title>
 	</head>
+
 	<body class="page">
+
+	<div class="page__wrapper">
+
+		<header class="header">
+			<a href="#" class="header__logo">
+				<img class="header__logo-image" src="<%=require('../images/logo.svg')%>" alt="logo" />
+			</a>
+			<button class="header__basket">
+				<span class="header__basket-value">0</span>
+			</button>
+		</header>
+
+		<main class="hero">
+			<img class="hero__background" src="<%=require('../images/arc.png')%>"/>
+			<div class="hero__gradient"></div>
+			<div class="hero__content">
+				<div class="stats">
+					<span class="stats__rating">
+						<img src="" alt="">
+						2.9
+					</span>
+					<span class="stats__author">Итан Райт</span>
+					<span class="stats__genre">
+						<img src="" alt="">
+						Документальный
+					</span>
+				</div>
+				<button class="button hero__action">Купить билет</button>
+			</div>
+		</main>
+
+		<footer class="gallery"></footer>
+
+	</div>
 
 	</body>
 </html>

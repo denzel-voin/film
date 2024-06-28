@@ -1,3 +1,7 @@
+@use '../blocks/header'
+
+@use 'variables' as *
+
 @mixin phone
   @media (max-width: 600px)
     @content
@@ -42,4 +46,32 @@ html
     font-size: 40%
   @include respond(big-screen)
     font-size: 75%
+
+.page
+  background-color: $background
+  &__wrapper
+    margin: 0 auto
+    width: 100%
+
+.hero
+  position: relative
+  height: 50rem
+  &__background
+    object-fit: cover
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+  &__gradient
+    background: linear-gradient(90deg, rgba(19, 24, 36, .8) 39.97%, rgba(255, 255, 255, 0) 100%)
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 0
+  &__content
+    position: fixed
+    z-index: 1
 
