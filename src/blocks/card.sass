@@ -1,0 +1,17 @@
+@use "../sass/variables" as *
+@use "../sass/mixins/container" as *
+
+.card
+  height: 6rem
+  background-color: $primary
+  color: white
+  @include flex(row)
+  align-items: center
+  padding: 0
+  overflow: hidden
+  &__image
+    height: 100%
+    aspect-ratio: 1
+  &__text
+    padding: 0.8rem
+    text-align: left

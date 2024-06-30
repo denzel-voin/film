@@ -1,0 +1,48 @@
+@use "../sass/variables" as *
+@use "../sass/mixins/interactive" as *
+@use "../sass/mixins/fix" as *
+@use "../sass/mixins/container" as *
+
+.film
+  &__about
+    @include flex(row)
+    gap: 1.5rem
+  &__about > *
+    display: flex
+    align-items: center
+    font-size: 2rem
+  &__rating::before
+    content: '⭐'
+    @include va-fix(-1px)
+    margin-right: 0.3rem
+    color: $secondary
+  &__tags::before
+    content: '•'
+    margin-right: 0.3rem
+    font-size: 2rem
+    line-height: 2rem
+    color: $secondary
+    @include va-fix(0)
+  &__back
+    @include link(white, $secondary)
+    display: flex
+    gap: 0.3rem
+  &__title
+    font-family: $titleFont
+    font-size: $titleFontSize
+    font-weight: 400
+    line-height: 93%
+    margin: 0.2rem 0
+  &__description
+    font-size: $mainFontSize
+    font-weight: 400
+    line-height: 1.4em
+    max-width: 82%
+    margin: 0
+    margin-block: 0
+.film_compact
+  font-size: 2vh
+  .film__title
+    font-size: 4em
+  .film__description
+    max-width: inherit

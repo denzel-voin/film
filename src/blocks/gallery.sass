@@ -1,0 +1,13 @@
+@use "../sass/variables" as *
+@use "../sass/mixins/interactive" as *
+@use "../sass/mixins/container" as *
+
+.gallery
+  @include container
+  @include grid(300px, 1.5rem)
+  &__item
+    border: none
+    border-radius: 0.8rem
+    @include selectable($secondary, 2px, $hover)
+    &::after
+      border-radius: 0.8rem
