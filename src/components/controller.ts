@@ -1,5 +1,6 @@
-import {getAnime} from './base/api'
-import {title, animeBackground, description, rating, episodes, genres} from "./view/view";
+import {getAnime, getSimilarAnime} from './base/api'
+import {title, animeBackground, description, rating, episodes, genres, render} from "./view/view";
+import {RelatedFilm} from "../types/base/api";
 
 
 async function displayAnimeTitle() {
@@ -21,3 +22,16 @@ async function displayAnimeTitle() {
 }
 
 displayAnimeTitle();
+
+async function displayRelatedTittles(): Promise<void> {
+    try {
+        const animes :RelatedFilm[] = await getSimilarAnime();
+        animes.forEach(anime => {
+            render(anime);
+        })
+    } catch (error) {
+        console.error("Error fetching anime:", error);
+    }
+}
+
+displayRelatedTittles();

@@ -8,3 +8,9 @@ export interface Film {
     videos? :{url:string}[],
     screenshots? :string
 }
+
+export interface RelatedFilm {
+    id :number,
+    russian :string,
+    image :{preview:string}
+}

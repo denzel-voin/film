@@ -1,6 +1,6 @@
 import {Film} from "../../types/base/api";
 export async function getAnime(): Promise<Film> | null {
-    const url = 'https://shikimori.one/api/animes/20';
+    const url = 'https://shikimori.one/api/animes/1';
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -28,16 +28,23 @@ export async function getAnime(): Promise<Film> | null {
 }
 
 
-interface RelatedAnime {
-    id: number;
-    name: string;
-    russian: string;
-    url: string;
-    image: {
-        original: string;
-        preview: string;
-        x96: string;
-        x48: string;
-    };
-}
+export async function getSimilarAnime<T>(): Promise<T> | null {
 
+    const url = `https://shikimori.one/api/animes/1/related`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const animes = data
+            .filter((el: { anime: Film }) => el.anime)
+            .map((el: { anime: Film }) => el.anime)
+        return animes
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return null
+    }
+}
