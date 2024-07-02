@@ -1,32 +1,8 @@
 @use "../sass/variables" as *
 @use "../sass/mixins/container" as *
-@use "../sass/mixins/interactive" as *
 
 .header
   @include container
   @include flex(row)
   align-items: center
   justify-content: space-between
-  &__basket
-    width: 4rem
-    height: 4rem
-    border: none
-    position: relative
-    cursor: pointer
-    background-color: transparent
-    &-img
-      @include link($primary, $baseFontColor)
-    &-value
-      position: absolute
-      display: flex
-      justify-content: center
-      align-items: center
-      top: 0
-      right: 0
-      width: 1.5rem
-      height: 1.5rem
-      font-size: 1rem
-      background-color: $secondary
-      color: $background
-      border-radius: 100%
-      font-weight: 600

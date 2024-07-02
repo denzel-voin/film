@@ -1,0 +1,23 @@
+@use "../sass/variables" as *
+@use "../sass/mixins/interactive" as *
+
+.form
+  display: flex
+  align-items: center
+  gap: 2rem
+  &_input
+    color: $secondary
+    padding: .6rem
+    font-size: 2rem
+    background-color: transparent
+    border: none
+    border-bottom: 2px solid $primary
+    &:focus
+      outline: none
+      border-bottom: 2px solid $secondary
+  &__search
+    border: none
+    cursor: pointer
+    background-color: transparent
+    &-img
+      @include link($primary, $baseFontColor)
