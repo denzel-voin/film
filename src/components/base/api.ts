@@ -2,15 +2,14 @@ import { Film } from '../model/data';
 import { IRelatedFilm, WebApi } from '../../types/base/types';
 
 export class Api implements WebApi {
-    protected searchUrl = 'https://shikimori.one/api/animes?search=';
-    protected baseUrl = 'https://shikimori.one/api/animes/';
+    baseUrl = 'https://shikimori.one/api/animes/';
 
     async getId(query: string): Promise<number | null> {
         let id = query.split(' ');
         if (id.length > 1) id.join('&');
-        else id.toString();
+        const result = id.toString();
         try {
-            const response = await fetch(this.searchUrl + id);
+            const response = await fetch(`https://shikimori.one/api/animes?search=${result}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }

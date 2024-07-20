@@ -1,14 +1,17 @@
 import { IRelatedFilm, IView } from '../../types/base/types';
 import { Film } from '../model/data';
+import { getAnime, getSimilarAnime } from '../base/api';
 
 export class View implements IView {
-    title = document.querySelector('.film__title');
-    animeBackground = document.querySelector('.hero__background') as HTMLImageElement;
-    description = document.querySelector('.film__description');
-    rating = document.querySelector('.film__rating');
-    episodes = document.querySelector('.film__episodes');
-    genres = document.querySelector('.film__tags');
-    gallery = document.querySelector('.gallery');
+    title: HTMLElement = document.querySelector('.film__title');
+    animeBackground= document.querySelector('.hero__background') as HTMLImageElement;
+    description: HTMLElement = document.querySelector('.film__description');
+    rating: HTMLElement = document.querySelector('.film__rating');
+    episodes: HTMLElement = document.querySelector('.film__episodes');
+    genres: HTMLElement = document.querySelector('.film__tags');
+    gallery: HTMLElement = document.querySelector('.gallery');
+    form: HTMLFormElement = document.querySelector('.form');
+    input: HTMLInputElement = document.querySelector('.form_input');
 
     async renderTitle(callback: Promise<Film>) {
         const anime = await callback;
@@ -42,5 +45,17 @@ export class View implements IView {
         cardTitle.classList.add('card__text');
         card.append(cardImage, cardTitle);
         this.gallery.append(card);
+    }
+
+    actionForm(callback: (query: string) => Promise<number | null>) {
+        this.form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const inputValue = this.input.value;
+            const id = await callback(inputValue);
+            this.renderTitle(getAnime(id));
+            this.gallery.innerHTML = '';
+            this.renderRelatedTittles(getSimilarAnime(id));
+            this.form.reset();
+        })
     }
 }
