@@ -1,6 +1,5 @@
 import { IRelatedFilm, IView } from '../../types/base/types';
 import { Film } from '../model/data';
-import { getAnime, getSimilarAnime } from '../base/api';
 
 export class View implements IView {
     title: HTMLElement = document.querySelector('.film__title');
@@ -10,8 +9,6 @@ export class View implements IView {
     episodes: HTMLElement = document.querySelector('.film__episodes');
     genres: HTMLElement = document.querySelector('.film__tags');
     gallery: HTMLElement = document.querySelector('.gallery');
-    form: HTMLFormElement = document.querySelector('.form');
-    input: HTMLInputElement = document.querySelector('.form_input');
 
     async renderTitle(callback: Promise<Film>) {
         const anime = await callback;
@@ -23,6 +20,7 @@ export class View implements IView {
             this.genres.textContent = anime.genres.join(' | ');
             this.animeBackground.src = anime.screenshots;
         } catch (error) {
+            console.error(error);
         }
     }
 
@@ -47,15 +45,4 @@ export class View implements IView {
         this.gallery.append(card);
     }
 
-    actionForm(callback: (query: string) => Promise<number | null>) {
-        this.form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const inputValue = this.input.value;
-            const id = await callback(inputValue);
-            this.renderTitle(getAnime(id));
-            this.gallery.innerHTML = '';
-            this.renderRelatedTittles(getSimilarAnime(id));
-            this.form.reset();
-        })
-    }
 }

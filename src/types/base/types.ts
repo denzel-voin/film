@@ -31,7 +31,7 @@ export interface IDataResponse {
 export interface WebApi {
     getId(query: string): Promise<number | null>;
     getAnime(id: number): Promise<Film | null>;
-    getSimilarAnime<T>(id: number): Promise<IRelatedFilm[] | null>;
+    getSimilarAnime(id: number): Promise<IRelatedFilm[] | null>;
 }
 
 export interface IView {

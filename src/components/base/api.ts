@@ -5,7 +5,7 @@ export class Api implements WebApi {
     baseUrl = 'https://shikimori.one/api/animes/';
 
     async getId(query: string): Promise<number | null> {
-        let id = query.split(' ');
+        const id = query.split(' ');
         if (id.length > 1) id.join('&');
         const result = id.toString();
         try {
@@ -23,7 +23,7 @@ export class Api implements WebApi {
         }
     }
 
-    async getAnime(id: number = 20): Promise<Film | null> {
+    async getAnime(id = 20): Promise<Film | null> {
         try {
             const response = await fetch(this.baseUrl + id);
             if (!response.ok) {
@@ -40,7 +40,7 @@ export class Api implements WebApi {
         }
     }
 
-    async getSimilarAnime(id: number = 20): Promise<IRelatedFilm[] | null> {
+    async getSimilarAnime(id = 20): Promise<IRelatedFilm[] | null> {
         try {
             const response = await fetch(`${this.baseUrl + id}/related`);
             if (!response.ok) {
@@ -59,7 +59,7 @@ export class Api implements WebApi {
     }
 }
 
-export async function getAnime(id: number = 20): Promise<Film | null> {
+export async function getAnime(id = 20): Promise<Film | null> {
     const url = `https://shikimori.one/api/animes/${id}`;
     try {
         const response = await fetch(url);
