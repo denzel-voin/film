@@ -19,8 +19,7 @@ form.addEventListener('submit', async (e) => {
 	gallery.innerHTML = '';
 	await view.renderRelatedTittles(getSimilarAnime(id));
 	form.reset();
-})
-
+});
 
 gallery.addEventListener('submit', (e) => {
 	e.preventDefault();
@@ -28,4 +27,4 @@ gallery.addEventListener('submit', (e) => {
 	view.renderTitle(getAnime(id));
 	gallery.innerHTML = '';
 	view.renderRelatedTittles(getSimilarAnime(id));
-})
+});

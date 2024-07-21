@@ -12,7 +12,7 @@ export class Film implements IFilm {
 
 	constructor(data: IDataResponse) {
 		this.id = data.id;
-		this.genres = data.genres.map((el: { russian: string; }) => el.russian);
+		this.genres = data.genres.map((el: { russian: string }) => el.russian);
 		this.description = data.description;
 		this.name = data.russian;
 		this.episodes = data.episodes;
@@ -20,6 +20,4 @@ export class Film implements IFilm {
 		this.videos = data.videos;
 		this.screenshots = `https://shikimori.one${data.screenshots[0].original}`;
 	}
-
 }
-
